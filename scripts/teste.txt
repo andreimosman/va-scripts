@@ -1,0 +1,10 @@
+cat tpl/ppp.txt | while read LINE; do 
+   LINHA=$( eval echo \"$LINE\" )
+   
+   echo $LINHA | grep -E "(.*)\:" > /dev/null
+   if [ $? -ne 0 ] ; then
+      echo -n " "
+   fi
+   echo $LINHA
+done > /lalala
+

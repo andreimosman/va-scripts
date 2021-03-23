@@ -1,0 +1,15 @@
+#
+# Crontab: /var/cron/tabs/root
+###########
+
+# Crontab exclusivo p/ atuador de banda larga
+* * * * * /usr/bin/perl /mosman/virtex/app/bin/unlock-pppoe.pl
+
+# Crontab p/ TODOS os atuadores
+* * * * * /usr/local/bin/php /mosman/virtex/app/bin/vtx-spool.php
+
+# Crontab apenas p/ master
+*/5 * * * * /usr/local/bin/php /mosman/virtex/app/bin/vtx-graph.php
+
+
+

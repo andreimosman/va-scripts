@@ -1,0 +1,11 @@
+# VirtexAdmin NG /mosman/virtex/app/etc/rc.conf.pf
+pf_enable="YES"                  
+pf_rules="/mosman/virtex/app/etc/pf.conf"
+pf_program="/sbin/pfctl"
+pf_flags=""
+pflog_enable="NO"
+pflog_logfile="/var/log/pflog"
+pflog_program="/sbin/pflogd"
+pflog_flags=""
+ftpproxy_enable="YES"
+ftpproxy_flags=""

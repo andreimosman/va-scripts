@@ -1,0 +1,3 @@
+# VirtexAdmin NG /mosman/virtex/app/etc/rc.conf.bd
+postgresql_enable="YES"
+

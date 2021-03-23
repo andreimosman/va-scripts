@@ -1,0 +1,3 @@
+# VirtexAdmin NG /mosman/virtex/app/etc/rc.conf.ftp
+proftpd_enable="YES"
+

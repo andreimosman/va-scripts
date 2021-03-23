@@ -1,0 +1,11 @@
+# VirtexAdmin NG /mosman/virtex/app/etc/rc.conf.email
+courier_authdaemond_enable="YES"
+courier_imap_imapd_enable="YES"
+courier_imap_imapd_ssl_enable="NO"
+courier_imap_pop3d_enable="YES"
+courier_imap_pop3d_ssl_enable="NO"
+saslauthd_enable="YES"
+
+clamav_clamd_enable="YES"
+clamav_freshclam_enable="YES"
+clamsmtpd_enable="YES"

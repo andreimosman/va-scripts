@@ -1,0 +1,22 @@
+server:
+ set log phase chat
+ set timeout 0
+ enable dns
+ disable ipv6cp
+
+pppoe-in:
+ allow users
+ enable pap
+ allow mode direct
+ set mru 1492
+ set mtu 1492
+ set speed sync
+ enable lqr
+ set lqrperiod 25
+ accept dns
+ enable dns
+ load server
+ enable vjcomp
+ accept vjcomp
+ set radius /etc/ppp/radius.conf
+

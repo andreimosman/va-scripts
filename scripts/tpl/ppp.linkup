@@ -1,0 +1,2 @@
+pppoe-in:
+ ! /usr/local/bin/php ${VA_PATH}/app/bin/vtx-pppoe.php -U -i INTERFACE -a HISADDR -u USER -p PROCESSID

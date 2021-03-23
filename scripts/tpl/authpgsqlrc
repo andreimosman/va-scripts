@@ -1,0 +1,64 @@
+#
+# Caso nao receba @dominio considera DEFAULT_DOMAIN
+#######
+
+DEFAULT_DOMAIN          $DOMAIN
+
+#
+# Conexao com o banco de dados
+#######
+
+PGSQL_HOST              127.0.0.1
+PGSQL_PORT              5432
+PGSQL_USERNAME          $DB_USER
+PGSQL_PASSWORD          $DB_PASS
+PGSQL_DATABASE          $DB_NAME
+
+#
+# Query
+# Formato: username, cryptpw, clearpw, uid, gid, home, maildir, quota, fullname, options
+#######
+
+PGSQL_SELECT_CLAUSE \
+ SELECT \
+  cnt.username,cnt.senha_cript, '', \
+  65534,65534, \
+  '/mosman/virtex/dados/emails/' || ce.dominio || '/' || ce.username, \
+   '', \
+   ce.quota, '', '' \
+ FROM \
+  cntb_conta cnt,cntb_conta_email ce, cbtb_contrato ctt \
+ WHERE \
+  cnt.username = '\\$(local_part)' \
+  AND cnt.dominio = '\\$(domain)' \
+  AND cnt.tipo_conta = 'E' \
+  AND cnt.username = ce.username \
+  AND cnt.dominio = ce.dominio \
+  AND cnt.tipo_conta = ce.tipo_conta \
+  AND cnt.id_cliente_produto = ctt.id_cliente_produto \
+  AND ctt.status = 'A'
+
+##NAME: PGSQL_CHPASS_CLAUSE:0
+#
+# (EXPERIMENTAL)
+# This is optional, PGSQL_CHPASS_CLAUSE can be set when you have a database,
+# which is structuraly different from proposed. The fixed string will
+# be used to do an UPDATE operation on database. In other words, it is
+# used, when changing password.
+#
+# There are four variables, which you can use. Substitution will be made
+# for them, so you can put entered username (local part) and domain name
+# in the right place of your query. There variables are:
+#       \\$(local_part) , \\$(domain) , \\$(newpass) , \\$(newpass_crypt)
+#
+# If a \\$(domain) is empty (not given by the remote user) the default domain
+# name is used in its place.
+# \\$(newpass) contains plain password
+# \\$(newpass_crypt) contains its crypted form
+#
+# PGSQL_CHPASS_CLAUSE   UPDATE  popbox                                  \
+#                       SET     clearpw='\\$(newpass)',                   \
+#                               password_hash='\\$(newpass_crypt)'        \
+#                       WHERE   local_part='\\$(local_part)'              \
+#                       AND     domain_name='\\$(domain)'
+#

@@ -1,0 +1,8 @@
+# VirtexAdmin NG /mosman/virtex/app/etc/rc.conf.dns
+named_enable="YES"
+named_program="/usr/sbin/named"
+named_flags="-u bind"
+named_pidfile="/var/run/named/pid"
+named_chrootdir="/var/named"
+named_chroot_autoupdate="YES"
+named_symlink_enable="YES"

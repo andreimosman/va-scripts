@@ -1,0 +1,2 @@
+pppoe-in:
+ ! /usr/local/bin/php ${VA_PATH}/app/bin/vtx-pppoe.php -D -i INTERFACE -u USER

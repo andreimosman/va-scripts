@@ -1,0 +1,5 @@
+# VirtexAdmin NG /mosman/virtex/app/etc/rc.conf.http
+apache22_enable="YES"
+#apache22_flags="-DSSL"
+
+
